@@ -1,3 +1,11 @@
+@import url('./variables.css');
+
+* {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-stretch:extra-expanded;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -7,38 +15,54 @@ html, body {
 }
 
 header {
-    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 2rem;
+    background-color: var(--color-footer-header);
+    border-bottom: 1px solid var(--color-lines);
+}
+
+header img {
+  max-width: 150px;
+  height: auto;
+}
+
+header img:hover {
+  cursor: pointer;
 }
 
 main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: blue;
+    background-color: var(--color-footer-header);
     min-height: 0;
 }
 
 .header-title {
     margin: 0;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 footer {
     padding: 1rem;
+    font-size: small;
     display: flex;
     justify-content: center;
+    border-top: 1px solid var(--color-lines);
 }
 
 .options {
     display: flex;
     justify-content: space-between;
-    margin: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--color-lines);
 }
 
 .tasks {
-    background-color: maroon;
+    flex-grow: 1;
+    background-color: var(--color-background);
     overflow-x: auto;
-    padding-right: 2rem;
     padding: 2rem;
     overflow-y: auto;
     min-height: 0;
@@ -58,20 +82,21 @@ footer {
 
 .tasks > div.active.table-view {
   display: flex;
+  padding-left: 2rem 0;
+  gap: 3rem;
 }
 
 .card-view {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.3rem;
 }
 
 .list-view {
     display: flex;
     flex-direction: column;
-    padding: 4rem;
-    gap: 1.5rem;
-    overflow-x: hidden;
+    padding: 1rem 2rem;
+    flex-shrink: 1;
 }
 
 .table-view {
@@ -92,8 +117,7 @@ footer {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
-    background-color: antiquewhite;
-    width: 300px;
+    min-width: 330px;
     border-radius: 20px;
     min-height: 300px;
     padding-bottom: 3rem;
@@ -101,37 +125,125 @@ footer {
 
 .category-header {
     position: relative;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
     min-width: inherit;
     min-height: 50px;
 }
 
 .category-card {
-    background-color: aqua;
-    border-radius: 10px;
-    min-width: 230px;
-    min-height: 130px;
+    background-color: var(--color-basic);
+    border: 1px solid var(--color-lines);
+    border-radius: 15px;
+    min-width: 330px;
+    min-height: 180px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.category-card:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.category-name {
+    font-size: 1.1rem;
+    font-weight: 450;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.category-line {
+    height: 1.2px;
+    background-color: var(--color-lines);
+}
+
+.category-count {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--color-text-ternary);
+    white-space: nowrap;
 }
 
 .list-item {
-    min-width: 70vw;
+    min-width: 80vw;
+    height: 110px;
     align-self: center;
-    background-color: white;
+    background-color: var(--color-basic);
+    border: 1px solid var(--color-lines);
+    border-bottom: none;
     padding: 1rem;
-    border-radius: 10px;
+    box-shadow: 0.5px 4px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.list-item:hover {
+    background-color: var(--color-background);
+}
+
+.list-item:first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.list-item:last-child {
+    border-bottom: 1px solid var(--color-lines);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .card {
-    justify-self: center;
-    width: 230px;
-    height: 150px;
-    border-radius: 20px;
-    background-color: red;
+    /* justify-self: center; */
+    height: 200px;
+    border: 1px solid var(--color-lines);
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
 }
 
-button {
-    padding: 0.5rem;
-    border-radius: 6px;
+.card:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    border: none;
+}
+
+.view-options {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+button {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--color-lines);
+    background-color: var(--color-basic);
+    border-radius: 8px;
+    min-width: 55px;
+    max-height: 35px;
+    cursor: pointer;
+}
+
+button.primary {
+    background-color: var(--color-primary);
+    color: var(--color-basic);
+}
+
+.view-options button.active {
+  background-color: var(--color-ternary);
+  color: var(--color-basic);           
+}
+
+.view-options button.active:hover {
+  background-color: var(--color-ternary-hover);        
+}
+
+button:hover {
+    background-color: var(--color-background);
+}
+
+button.primary:hover {
+    background-color: var(--color-primary-hover);
 }
